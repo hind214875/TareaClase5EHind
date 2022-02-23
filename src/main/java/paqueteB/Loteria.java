@@ -5,10 +5,11 @@
  */
 package paqueteB;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
 
 /**
  *
@@ -17,15 +18,17 @@ import java.util.Random;
 public class Loteria {
 
     //atributos
-    private Map<String, Integer> decimos;
+    private ArrayList<String> premio=new ArrayList<String>(Arrays.asList("Viaje", "Moneda", "Auto"));
+    private Map<String, ArrayList<String>> decimos;
 
     public Loteria() {
         this.decimos = new HashMap<>();
+        insertar();
     }
 
-    public Loteria(Map<String, Integer> decimos) {
+    public Loteria(ArrayList<String> premio, Map<String, ArrayList<String>> decimos) {
+        this.premio = premio;
         this.decimos = decimos;
-        insertar();
     }
 
     public void mostrar() {
@@ -34,26 +37,12 @@ public class Loteria {
         }
     }
 
-    private int generarPremio() {
+    private String generarPremio() {
         Random rd = new Random();
-        int posibilidad = rd.nextInt(50);
-        int premio;
+        int randomitem = rd.nextInt(premio.size());
+        String posibilidad = premio.get(randomitem);
 
-        if (posibilidad == 50) {
-            premio = 100_000_000;
-        } else if (posibilidad >= 45 && posibilidad < 50) {
-            premio = 50_000_000;
-        } else if (posibilidad >= 30 && posibilidad < 45) {
-            premio = 10_000;
-        } else if (posibilidad >= 20 && posibilidad < 30) {
-            premio = 500;
-        } else if (posibilidad > 10 && posibilidad < 20) {
-            premio = 50;
-        } else {
-            premio = 0;
-        }
-
-        return premio;
+        return posibilidad;
     }
 
     private void insertar() {
@@ -73,14 +62,12 @@ public class Loteria {
         }
 
     }
-    
-    public Integer consultarPremio(String decimo){
-        if(decimos.containsKey(decimo)){
+
+    public Integer consultarPremio(String decimo) {
+        if (decimos.containsKey(decimo)) {
             return decimos.get(decimo);
         }
         return -1;
     }
-    
-    
 
 }

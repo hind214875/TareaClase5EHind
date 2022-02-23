@@ -5,7 +5,6 @@
  */
 package paqueteA;
 
-import java.util.Arrays;
 
 /**
  *

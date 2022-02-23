@@ -52,8 +52,11 @@ public class MapEjercitos {
 
         //this methos putIfAbsent only if no such key exists 
         //un valor nulo (si no había una asignación con la clave proporcionada antes o se asignó a un valor nulo
-        ejercitos.putIfAbsent("Ej5", e1);
-       
+        ejercitos.putIfAbsent("Ej5", e);
+        System.out.println("\nput Ej4 si no existe");
+        for (String key : ejercitos.keySet()) {
+            System.out.printf("Clave: %s -- Objeto: %s %n", key, ejercitos.get(key));
+        }
 
     }
 }
