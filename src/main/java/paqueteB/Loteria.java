@@ -5,8 +5,6 @@
  */
 package paqueteB;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -17,17 +15,15 @@ import java.util.Random;
  */
 public class Loteria {
 
-    //atributos
-    private ArrayList<String> premio=new ArrayList<String>(Arrays.asList("Viaje", "Moneda", "Auto"));
-    private Map<String, ArrayList<String>> decimos;
+    //atributos 
+    private Map<String, Premio> decimos;
 
     public Loteria() {
         this.decimos = new HashMap<>();
         insertar();
     }
 
-    public Loteria(ArrayList<String> premio, Map<String, ArrayList<String>> decimos) {
-        this.premio = premio;
+    public Loteria(Map<String, Premio> decimos) {
         this.decimos = decimos;
     }
 
@@ -37,14 +33,15 @@ public class Loteria {
         }
     }
 
-    private String generarPremio() {
+    private Premio generarPremioAleatorio() {
         Random rd = new Random();
-        int randomitem = rd.nextInt(premio.size());
-        String posibilidad = premio.get(randomitem);
+        Premio[] values = Premio.values();
+        int size = values.length;
+        return values[rd.nextInt(size)];
 
-        return posibilidad;
     }
 
+    //metodo que no recibe nada y no devuelve nada solo genera el num con zeros a la izquierda  
     private void insertar() {
         for (int i = 0; i <= 1000; i++) {
             String num;
@@ -58,16 +55,17 @@ public class Loteria {
                 num = "" + i;
             }
 
-            decimos.put(num, generarPremio());
+            decimos.put(num, generarPremioAleatorio());
         }
 
     }
 
-    public Integer consultarPremio(String decimo) {
+    //consultar el premio que ha salido, lo pasamos el clave y si exsite devolvemos su premio aleatorio
+    public Premio consultarPremio(String decimo) {
         if (decimos.containsKey(decimo)) {
             return decimos.get(decimo);
         }
-        return -1;
+        return null;
     }
 
 }
