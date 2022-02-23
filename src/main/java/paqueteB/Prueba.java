@@ -14,7 +14,7 @@ public class Prueba {
     public static void main(String[] args) {
         Loteria l = new Loteria();
 
-         
-        System.out.println("tu premio es: " + l.consultarPremio("0200"));
+       // l.mostrar();
+        System.out.println("tu premio es: " + l.consultarPremio("0100"));
     }
 }
