@@ -33,13 +33,7 @@ public class Loteria {
         }
     }
 
-    private Premio generarPremioAleatorio() {
-        Random rd = new Random();
-        Premio[] values = Premio.values();
-        int size = values.length;
-        return values[rd.nextInt(size)];
-
-    }
+   
 
     //metodo que no recibe nada y no devuelve nada solo genera el num con zeros a la izquierda  
     private void insertar() {
@@ -55,7 +49,7 @@ public class Loteria {
                 num = "" + i;
             }
 
-            decimos.put(num, generarPremioAleatorio());
+            decimos.put(num, Premio.generarPremioAleatorio());
         }
 
     }
