@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Traductor {
 
     //constrector
     public Traductor() {
-        this.traductor = new HashMap<>();
+        this.traductor = new TreeMap<>();
     }
 
     public Traductor(Map<String, String> traductor) {
@@ -39,8 +40,8 @@ public class Traductor {
     }
 
     //metodos
-    public void añadirNuevaPalabra(String PalabraEsp, String traduEng) {
-        traductor.put(PalabraEsp, traduEng);
+    public void añadirNuevaPalabra(String traduEng, String PalabraEsp) {
+        traductor.put(traduEng, PalabraEsp);
     }
 
     //borrar entradas

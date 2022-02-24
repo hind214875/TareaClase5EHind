@@ -27,6 +27,7 @@ public class Prueba {
         t1.añadirNuevaPalabra("youth", "juventud");
         
         //muestra lista palabras Ingles
+        System.out.println("palabras Ingles");
         t1.listaPalabrasIngles().forEach(System.out::println);
         
         //muestra lista palabras Español
